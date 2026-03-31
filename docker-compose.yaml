@@ -1,0 +1,23 @@
+services:
+  app:
+    build: ./dec_docker_training/app
+    container_name: streamlit-app_c
+    ports: 
+      - '8501:8501'
+    volumes: 
+      - ./dec_docker_training/app:/app
+    env_file:
+      - .env
+    depends_on:
+      - app-db
+
+  app-db:
+    image: postgres:15-alpine
+    container_name: streamlit_db
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
