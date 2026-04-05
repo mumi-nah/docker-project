@@ -1,6 +1,6 @@
 services:
   app:
-    build: ./dec_docker_training/app
+    build: ./dec_docker_training/
     container_name: streamlit-app_c
     ports: 
       - '8501:8501'
